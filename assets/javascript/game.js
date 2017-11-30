@@ -4,7 +4,7 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var guessesList = [];
-var dashes = [];
+
 
 
 var html = 
@@ -12,6 +12,7 @@ var html =
 		"<p> Losses: " + losses + "</p>" +
 		"<p> Guesses Left: " + guessesLeft + "</p>" +
 		"<p> Guesses so Far: " + guessesList + "</p>";
+
 
 		document.querySelector("#game").innerHTML = html;
 
@@ -23,21 +24,22 @@ var html =
 		var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
 
 		// tell dashes array to fill with number of dashes in computerChoice word
-		for (var i = 0, i<characterChoices.length, i++;){
-			dashes[i] = "_";
+		for (var i = 0, i<computerChoice.length, i++;){
+			guessesList[i] = "_";
 		}
 
+		var remainingLetters = computerChoice.length;
 
+		while (remainingLetters > 0){
+			userChoice = event.key;
+			guessesList.push(userChoice);
+		}
 
-	// if user choice = match to letter in computer word, display that letter and no other letters
-
-
-	//if user does not choose matching letter, take away one guess and add to guesseslist
-
-	// if user choice completes word, add one to wins and show image that matches word
-
-	//if guesses reach 0, add 1 loss and restart game (show answer?)
-
-
+		for (var j = 0, j < computerChoice.length, j++;){
+			if (computerChoice === userChoice){
+				guessesList[j]===userChoice;
+				remainingLetters--;
+			}
+		}
 
 	];
