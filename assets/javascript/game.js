@@ -74,6 +74,9 @@ var gameText =
 			reset();
 			
 		}
+
+		// if remainingLetters===0, display image associated with that computerChoice and start audio of Tarzan song else don't show anything
+		// probably something with getElementById.("game").innerHTML = (link to image)
 	
 
 
