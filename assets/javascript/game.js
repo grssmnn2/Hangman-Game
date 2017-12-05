@@ -27,7 +27,7 @@ var gameText =
 		//reset function called to reset guesses after a win or loss
 		function reset () {
 			
-			// Generate random computer choice and store it in variable computerChoice
+			// Generate new random computer choice and store it in variable computerChoice
 			var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
 			guessesLeft = 10;
 			guessesList = [];
@@ -55,29 +55,35 @@ var gameText =
 		// tell correctGuesses array to fill with number of dashes in computerChoice word
 		for (var i = 0; i<computerChoice.length; i++){
 				                             
+		// if userChoice=a letter in the world, print that letter in corresponding space and reduce remaining letter count
 		if (computerChoice[i] === userChoice) {
 			correctGuesses[i] = userChoice;
 			remainingLetters--;
 
 		} 
 	
-	}	
+	}
+		//if guesses left is not zero yet, push user choice to guess list and reduce guesses left by 1 
 		if (guessesLeft !==0) {
 			guessesList.push(userChoice);
 			guessesLeft--;
-
-		} else { 
+			// if guesses Left is 0, increase losses and reset game
+		} else if (guessesLeft===0) { 
 			losses++;
 			reset();
+			tn();
 			
-		}
-
-
-		if (remainingLetters===0){
+		}else{
 			wins++;
 			reset();
-			
+			tn();
 		}
+
+		function tn() {
+		var elem = document.createElement("assets/images/tarzanfriends.jpg")
+		document.getElementById("photos").appendChild(elem);
+        document.getElementById('photos').style.visibility='visible';
+      }
 
 		// if remainingLetters===0, display image associated with that computerChoice and start audio of Tarzan song else don't show anything
 		// probably something with getElementById.("game").innerHTML = (link to image)
