@@ -1,6 +1,10 @@
 
 body{
-	background-color: rgb(60,179,113);
+	background: no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 
 h3, p{
