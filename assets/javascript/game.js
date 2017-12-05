@@ -71,26 +71,26 @@ var gameText =
 		} else if (guessesLeft===0) { 
 			losses++;
 			reset();
-			tn();
+			
 			
 		}else{
 			wins++;
 			reset();
-			tn();
+			
 		}
 
-		function tn() {
-		var elem = document.createElement("assets/images/tarzanfriends.jpg")
-		document.getElementById("photos").appendChild(elem);
-        document.getElementById('photos').style.visibility='visible';
-      }
+		
+		var img = document.createElement("img");
+		img.src = "assets/images/tarzanfriends.jpg";
+		var src = document.getElementById("photos");
+		src.appendChild(img);
+    
+      
 
 		// if remainingLetters===0, display image associated with that computerChoice and start audio of Tarzan song else don't show anything
 		// probably something with getElementById.("game").innerHTML = (link to image)
 	
-
-
-			
+				
 		var gameText = 
 		"<p> Word to Guess: " + correctGuesses + "</p>"+
 		"<p> Wins: " + wins + "</p>" +
