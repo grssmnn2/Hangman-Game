@@ -5,12 +5,13 @@ var losses = 0;
 var guessesLeft = 10;
 var correctGuesses = [];
 var guessesList = [];
+// count down how many letters left to guess
+var remainingLetters = correctGuesses.length;
 
-
-// function newWord(){
-	// Generate random computer choice and store it in variable computerChoice
-	var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
-		// }
+// Generate random computer choice and store it in variable computerChoice
+var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
+//variable puzzle holds computer's choice as individual letters
+var puzzle = computerChoice.split("");
 
 //text shown on user side
 var gameText = 
@@ -25,22 +26,25 @@ var gameText =
 	
 		//reset function called to reset guesses after a win or loss
 		function reset () {
+			
+			// Generate random computer choice and store it in variable computerChoice
+			var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
 			guessesLeft = 10;
 			guessesList = [];
+	
 		};
 
-		//variable puzzle holds computer's choice as individual letters
-		var puzzle = computerChoice.split("");
-
+	
+		// use loop to push an underscore for each letter of computerChoice
 		for (j = 0; j<computerChoice.length; j++) {
-		puzzle[j]="_";
-		correctGuesses.push(puzzle[j]);		
+			puzzle[j]="_";
+			correctGuesses.push(puzzle[j]);		
 		}
-
-		var remainingLetters = correctGuesses.length;
+	
 
 		// when key is pressed, trigger game to start reacting
 		document.onkeyup = function(event) {
+
 
 		// user choice is whatever key was pressed
 		var userChoice = event.key;

@@ -12,4 +12,10 @@ h3, p{
 	background-color: rgb(255,248,220);
 
 
+
+}
+
+.col-md-6{
+	border: 2px solid black;
+
 }
