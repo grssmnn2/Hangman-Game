@@ -26,7 +26,7 @@ $(document).ready(function () {
 	function reset() {
 		// Generate new random computer choice and store it in variable computerChoice
 		computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
-		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>"
+		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>" + "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
 		guessesLeft = 10;
 		guessesList = [];
 		correctGuesses=[];
@@ -64,16 +64,17 @@ $(document).ready(function () {
 			if (guessesLeft > 0 && correctGuesses.indexOf("_") === -1) {
 				wins++;
 				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzanfriends.jpg'/>" + "</p>" + "<p>" + "You got it! Thanks for helping!" + "</p>"
-				setTimeout(function(){ reset(); }, 3000);
+				setTimeout(function(){ reset(); }, 4000);
 				// reset();
-			} else if (guessesLeft > 0) {
+			} else if (guessesLeft > 0 && guessesList.indexOf(userChoice)=== -1) {
 				guessesList.push(userChoice);
 				guessesLeft--;
 				// if guesses Left is 0, increase losses and reset game
 			} else if (guessesLeft === 0) {
 				losses++;
-				src = document.getElementById("photos").innerHTML = "<p>" + "Looks like Tarzan isn't remembering anything today!" + "</p>"
-				setTimeout(function(){ reset(); }, 3000);
+				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/friends2.jpg'/>" + "</p>" + 
+				"<p>" + "Looks like Tarzan isn't remembering anything today!" + "</p>"
+				setTimeout(function(){ reset(); }, 4000);
 			}
 
 			var gameText =
