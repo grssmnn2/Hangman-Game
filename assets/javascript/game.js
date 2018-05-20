@@ -1,3 +1,4 @@
+$(document).ready(function () {
 // declare global variables used + word choices available to computer
 var characterChoices = ["tarzan", "jane", "tantor", "terk", "kala", "rainforest", "adventure", "gorilla", "leopard", "vines"];
 var wins = 0;
@@ -7,6 +8,10 @@ var correctGuesses = [];
 var guessesList = [];
 // count down how many letters left to guess
 var remainingLetters = correctGuesses.length;
+
+var rainforest = new Audio("assets/Rainforest-sounds.mp3");
+// play Harry Potter Theme on page load
+rainforest.play();
 
 // Generate random computer choice and store it in variable computerChoice
 var computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
@@ -47,7 +52,7 @@ document.onkeyup = function (event) {
 		//if guesses left is not zero yet, push user choice to guess list and reduce guesses left by 1 
 		if(guessesLeft > 0 && correctGuesses.indexOf("_") === -1){
 			wins++;
-			var src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzanfriends.jpg'/>" + "</p>"
+			var src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzanfriends.jpg'/>" + "</p>" + "<p>" + "You got it! Thanks for helping!" + "</p>"
 			reset();
 		}else if (guessesLeft > 0) {
 			guessesList.push(userChoice);
@@ -69,3 +74,4 @@ document.onkeyup = function (event) {
 		document.getElementById("game").innerHTML = gameText;
 	}
 };
+});
