@@ -18,10 +18,6 @@ $(document).ready(function () {
 	// Generate random computer choice and store it in variable computerChoice
 	var computerChoice;
 
-
-	// use loop to push an underscore for each letter of computerChoice
-
-
 	//reset function called to reset guesses after a win or loss
 	function reset() {
 		// Generate new random computer choice and store it in variable computerChoice
@@ -29,8 +25,6 @@ $(document).ready(function () {
 		correctGuesses.length = 0;
 		guessesLeft = 10;
 		computerChoice = characterChoices[Math.floor(Math.random() * characterChoices.length)];
-		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>" + "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
-	
 		// count down how many letters left to guess
 		remainingLetters = correctGuesses.length;
 
@@ -42,6 +36,8 @@ $(document).ready(function () {
 			correctGuesses.push(puzzle[j]);
 		}
 
+		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>" + "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
+
 	};
 	// when key is pressed, trigger game to start reacting
 	document.onkeyup = function (event) {
@@ -51,7 +47,7 @@ $(document).ready(function () {
 
 		// check if user input is alphabetical and if so run the game, if not do not add input to guesses list
 		if (event.keyCode >= 65 && event.keyCode <= 90) {
-			// tell correctGuesses array to fill with number of dashes in computerChoice word
+		
 			for (var i = 0; i < computerChoice.length; i++) {
 				// if userChoice=a letter in the world, print that letter in corresponding space and reduce remaining letter count
 				if (computerChoice[i] === userChoice) {
