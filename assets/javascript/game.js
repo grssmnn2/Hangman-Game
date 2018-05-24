@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 	// Generate random computer choice and store it in variable computerChoice
 	var computerChoice;
+	var gameText;
 
 	//reset function called to reset guesses after a win or loss
 	function reset() {
@@ -37,6 +38,13 @@ $(document).ready(function () {
 		}
 
 		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>" + "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
+		gameText =
+		"<p> Word to Guess: " + correctGuesses + "</p>" +
+		"<p> Wins: " + wins + "</p>" +
+		"<p> Losses: " + losses + "</p>" +
+		"<p> Guesses Left: " + guessesLeft + "</p>" +
+		"<p> Guesses so Far: " + guessesList + "</p>";
+		document.getElementById("game").innerHTML = gameText;
 
 	};
 	// when key is pressed, trigger game to start reacting
@@ -47,7 +55,7 @@ $(document).ready(function () {
 
 		// check if user input is alphabetical and if so run the game, if not do not add input to guesses list
 		if (event.keyCode >= 65 && event.keyCode <= 90) {
-		
+
 			for (var i = 0; i < computerChoice.length; i++) {
 				// if userChoice=a letter in the world, print that letter in corresponding space and reduce remaining letter count
 				if (computerChoice[i] === userChoice) {
@@ -60,27 +68,29 @@ $(document).ready(function () {
 			if (guessesLeft > 0 && correctGuesses.indexOf("_") === -1) {
 				wins++;
 				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzanfriends.jpg'/>" + "</p>" + "<p>" + "You got it! Thanks for helping!" + "</p>"
-				setTimeout(function(){ reset() }, 4000);
-				
-			} else if (guessesLeft > 0 && guessesList.indexOf(userChoice)=== -1) {
+				setTimeout(function () { reset() }, 4000);
+
+			} else if (guessesLeft > 0 && guessesList.indexOf(userChoice) === -1) {
 				guessesList.push(userChoice);
 				guessesLeft--;
 				// if guesses Left is 0, increase losses and reset game
 			} else if (guessesLeft === 0) {
 				losses++;
-				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/friends2.jpg'/>" + "</p>" + 
-				"<p>" + "Looks like Tarzan isn't remembering anything today!" + "</p>"
-				setTimeout(function(){ reset() }, 4000);
+				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/friends2.jpg'/>" + "</p>" +
+					"<p>" + "Looks like Tarzan isn't remembering anything today!" + "</p>"
+				setTimeout(function () { reset() }, 4000);
 			}
 
-			var gameText =
-				"<p> Word to Guess: " + correctGuesses + "</p>" +
-				"<p> Wins: " + wins + "</p>" +
-				"<p> Losses: " + losses + "</p>" +
-				"<p> Guesses Left: " + guessesLeft + "</p>" +
-				"<p> Guesses so Far: " + guessesList + "</p>";
+			gameText =
+			"<p> Word to Guess: " + correctGuesses + "</p>" +
+			"<p> Wins: " + wins + "</p>" +
+			"<p> Losses: " + losses + "</p>" +
+			"<p> Guesses Left: " + guessesLeft + "</p>" +
+			"<p> Guesses so Far: " + guessesList + "</p>";
 
 			document.getElementById("game").innerHTML = gameText;
+
+
 		}
 	};
 });
