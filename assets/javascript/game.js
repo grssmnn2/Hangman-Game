@@ -3,7 +3,7 @@ $(document).ready(function () {
 	rainforest.play();
 
 	// declare global variables used + word choices available to computer
-	var characterChoices = ["tarzan", "jane", "tantor", "terk", "kala", "rainforest", "adventure", "gorilla", "leopard", "vines"];
+	var characterChoices = ["tarzan", "jane", "tantor", "terk", "kala", "python", "swamp", "rainforest", "adventure", "gorilla", "leopard", "vines"];
 	var wins = 0;
 	var losses = 0;
 	var guessesLeft = 10;
@@ -69,15 +69,16 @@ $(document).ready(function () {
 				wins++;
 				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzanfriends.jpg'/>" + "</p>" + "<p>" + "You got it! Thanks for helping!" + "</p>"
 				setTimeout(function () { reset() }, 4000);
-
+			// if guesses is greater than 0 and user didn't guess a correct letter
 			} else if (guessesLeft > 0 && guessesList.indexOf(userChoice) === -1) {
 				guessesList.push(userChoice);
 				guessesLeft--;
-				// if guesses Left is 0, increase losses and reset game
+			// if guesses Left is 0, increase losses and reset game
 			} else if (guessesLeft === 0) {
 				losses++;
 				src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/friends2.jpg'/>" + "</p>" +
 					"<p>" + "Looks like Tarzan isn't remembering anything today!" + "</p>"
+					+ "<P>" + "The correct answer was " + computerChoice + "</p>"
 				setTimeout(function () { reset() }, 4000);
 			}
 
