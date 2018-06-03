@@ -37,7 +37,7 @@ $(document).ready(function () {
 			correctGuesses.push(puzzle[j]);
 		}
 
-		src = document.getElementById("photos").innerHTML = "<p>" + "Type a letter to begin your game." + "</p>" + "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
+		src = document.getElementById("photos").innerHTML = "<p>" + "<img src='assets/images/tarzan1.jpg'/>" + "</p>"
 		gameText =
 		"<p> Word to Guess: " + correctGuesses + "</p>" +
 		"<p> Wins: " + wins + "</p>" +
